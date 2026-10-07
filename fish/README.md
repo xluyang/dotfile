@@ -58,8 +58,8 @@ plugin `conf.d` files, or `fish_variables`.
 ## Prompt
 
 Starship owns the prompt; `config.fish` runs `starship init fish` when the
-binary is available. The theme is defined in `starship/starship.toml` (One
-Dark, two-line). If Starship is missing, Fish falls back to its default prompt.
+binary is available. The theme is defined in `starship/starship.toml` (Catppuccin
+Mocha, two-line). If Starship is missing, Fish falls back to its default prompt.
 
 ## nvm (Node.js version manager)
 

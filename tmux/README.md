@@ -2,7 +2,7 @@
 
 This directory contains the standalone tmux configuration used by this dotfile.
 `tmux.conf` owns tmux options, personal key bindings, plugin declarations, and
-the status bar. `colors.conf` contains the Catppuccin Frappe palette referenced
+the status bar. `colors.conf` contains the Catppuccin Mocha palette referenced
 by the status bar and pane/window styles.
 
 The status bar layout and palette direction are adapted from

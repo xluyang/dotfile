@@ -1,17 +1,17 @@
 # Starship prompt for this dotfiles repository.
 #
 # Design goals:
-# - One Dark colours defined in the local palette below.
+# - Catppuccin Mocha colours defined in the local palette below.
 # - A quiet, two-line prompt: context and repository state above, input below.
 # - Useful information at a glance without making every shell prompt noisy.
-# - Nerd Font symbols are used consistently with tmux and the One Dark palette.
+# - Nerd Font symbols are used consistently with tmux and the Catppuccin palette.
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
 command_timeout = 1000
 scan_timeout = 500
-palette = 'one_dark'
+palette = 'catppuccin_mocha'
 
 # First line: location and repository state on the left, transient context on
 # the right. The second line is deliberately reserved for the command itself.
@@ -31,17 +31,17 @@ $golang\
 $time
 $line_break$character"""
 
-[palettes.one_dark]
-black = '#1E2127'
-bright_black = '#5C6370'
-red = '#E06C75'
-green = '#98C379'
-yellow = '#D19A66'
-blue = '#61AFEF'
-purple = '#C678DD'
-cyan = '#56B6C2'
-white = '#ABB2BF'
-bright_white = '#FFFFFF'
+[palettes.catppuccin_mocha]
+black = '#1e1e2e'
+bright_black = '#6c7086'
+red = '#f38ba8'
+green = '#a6e3a1'
+yellow = '#f9e2af'
+blue = '#89b4fa'
+purple = '#cba6f7'
+cyan = '#89dceb'
+white = '#cdd6f4'
+bright_white = '#bac2de'
 
 [username]
 show_always = false

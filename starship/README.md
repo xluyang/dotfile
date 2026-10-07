@@ -1,13 +1,13 @@
 # Starship 提示符
 
-这份配置采用 One Dark 配色、Nerd Font 图标、Powerline 语义和双行布局，
+这份配置采用 Catppuccin Mocha 配色、Nerd Font 图标、Powerline 语义和双行布局，
 把提示符拆成更容易维护的模块（视觉语言沿自早期的 Powerlevel10k 主题）。
 
 ## 设计决策
 
 | 目标 | 实现 |
 | --- | --- |
-| 保持个人主题 | One Dark 调色板集中定义为 `one_dark` palette（在 `starship.toml` 的 `[palettes.one_dark]`） |
+| 保持个人主题 | Catppuccin Mocha 调色板集中定义为 `catppuccin_mocha` palette（在 `starship.toml` 的 `[palettes.catppuccin_mocha]`） |
 | 维持双行、留白和简洁感 | 第一行显示目录/Git/状态与运行时信息，第二行只放输入符号 |
 | 快速判断仓库状态 | 分支、未跟踪、修改、暂存、冲突、领先/落后数量直接显示 |
 | 减少噪声 | 语言版本只在对应项目中出现；命令耗时只显示超过 2 秒的命令 |

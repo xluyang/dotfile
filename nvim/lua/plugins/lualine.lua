@@ -5,21 +5,33 @@ return {
     local auto = require("lualine.themes.auto")
 
     local colors = {
-      -- Solarized dark palette
-      base03 = "#002b36", -- 背景
-      base02 = "#073642", -- 背景高亮
-      base01 = "#586e75", -- 注释 / 次要内容
-      base00 = "#657b83", -- 正文
-      base0 = "#839496", -- 注释 / 次要内容
-      base1 = "#93a1a1", -- 可选强调内容
-      yellow = "#b58900",
-      orange = "#cb4b16",
-      red = "#dc322f",
-      magenta = "#d33682",
-      violet = "#6c71c4",
-      blue = "#268bd2",
-      cyan = "#2aa198",
-      green = "#859900",
+      -- Catppuccin Mocha palette
+      base = "#1e1e2e", -- 背景
+      mantle = "#181825", -- 背景高亮
+      crust = "#11111b",
+      surface0 = "#313244",
+      surface1 = "#45475a",
+      surface2 = "#585b70",
+      overlay0 = "#6c7086", -- 注释 / 次要内容
+      overlay1 = "#7f849c",
+      overlay2 = "#9399b2",
+      subtext0 = "#a6adc8",
+      subtext1 = "#bac2de",
+      text = "#cdd6f4", -- 正文
+      rosewater = "#f5e0dc",
+      flamingo = "#f2cdcd",
+      pink = "#f5c2e7",
+      mauve = "#cba6f7",
+      red = "#f38ba8",
+      maroon = "#eba0ac",
+      peach = "#fab387",
+      yellow = "#f9e2af",
+      green = "#a6e3a1",
+      teal = "#94e2d5",
+      sky = "#89dceb",
+      sapphire = "#74c7ec",
+      blue = "#89b4fa",
+      lavender = "#b4befe",
     }
 
     local function separator()
@@ -27,7 +39,7 @@ return {
         function()
           return "│"
         end,
-        color = { fg = colors.base01, bg = "NONE", gui = "bold" },
+        color = { fg = colors.overlay0, bg = "NONE", gui = "bold" },
         padding = { left = 1, right = 1 },
       }
     end

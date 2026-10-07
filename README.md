@@ -146,7 +146,7 @@ Noice/Snacks, and the custom lualine statusline are configured there. See the
 
 The standalone `tmux/tmux.conf` owns options, `Ctrl-a` bindings, plugin
 declarations, status-bar layout, and pane/window styles. `colors.conf` provides
-the Catppuccin Frappé palette. TPM is initialized at the end of the file; the
+the Catppuccin Mocha palette. TPM is initialized at the end of the file; the
 oh-my-tmux dependency and `tmux.conf.local` have been removed. See
 [tmux/README.md](tmux/README.md) for plugin controls and pane zoom behavior.
 
@@ -160,7 +160,7 @@ live there. See [fish/README.md](fish/README.md).
 
 ### Starship
 
-Starship is the prompt for Fish, with a One Dark two-line theme. See
+Starship is the prompt for Fish, with a Catppuccin Mocha two-line theme. See
 [starship/README.md](starship/README.md).
 
 ## Verification
