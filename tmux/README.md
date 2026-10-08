@@ -58,6 +58,24 @@ The prefix is `Ctrl-a`. After the prefix, `-` splits vertically (stacked) and
 navigate panes, while `H`, `J`, `K`, and `L` resize the active pane. `r` reloads
 the linked `tmux.conf`.
 
+## Clipboard (copy and paste)
+
+tmux-yank copies the selection to the system clipboard. On WSL its default
+(`cat | clip.exe`) reads bytes as the Windows console codepage; on a zh-CN
+Windows that codepage is GBK (cp936), so UTF-8 Chinese text gets mangled. The
+config therefore prefers `win32yank.exe`, a UTF-8-native clipboard tool, when
+it is available and only falls back to `clip.exe`.
+
+`win32yank.exe` ships with the Windows build of Neovim (this repository pairs
+with Neovim) or can be installed with `winget install win32yank` / scoop. Put
+it somewhere on the Windows `PATH` so WSL can resolve `win32yank.exe`.
+
+The config also enables tmux's built-in `set-clipboard`, so selecting text in
+copy mode sends an OSC 52 escape to set the terminal clipboard directly
+(UTF-8-safe). Windows Terminal, iTerm2, kitty, and WezTerm all support OSC 52;
+in terminals without support the escape is ignored and tmux-yank's copy
+command is still available via `Ctrl-a y`.
+
 ## Pane Zoom and Historical Maximize Behavior
 
 This configuration uses tmux's built-in pane zoom: `Ctrl-a z` runs

@@ -1,6 +1,18 @@
 # Keep Fish-only environment setup separate from bash/zsh configuration.
 status is-interactive; or return
 
+# Prefer a UTF-8 locale so CJK text survives terminals and clipboards. A
+# zh-CN Windows console can leave WSL on a non-UTF-8 (GBK) locale; keep an
+# existing UTF-8 locale untouched.
+if not string match -qi 'utf-?8' "$LANG"
+    for lc in en_US.UTF-8 C.UTF-8
+        if command locale -a 2>/dev/null | grep -qix "$lc"
+            set -gx LANG "$lc"
+            break
+        end
+    end
+end
+
 fish_add_path --global "$HOME/.local/bin" "$HOME/.cargo/bin"
 
 # Homebrew on Apple Silicon does not add itself to Fish's PATH.

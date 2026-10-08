@@ -45,7 +45,7 @@ plugin `conf.d` files, or `fish_variables`.
 ## Layout
 
 - `config.fish`: entry point; initializes Starship for interactive shells.
-- `conf.d/00_env.fish`: Fish-only paths and WSL gateway detection.
+- `conf.d/00_env.fish`: Fish-only paths, UTF-8 locale preference, and WSL gateway detection.
 - `conf.d/05_rustup.fish`: loads Cargo's Fish environment when present.
 - `conf.d/10_aliases.fish`: interactive aliases (`lg`, `eza`).
 - `conf.d/15_ai_env.fish`: Claude Code / DeepSeek non-sensitive environment.
