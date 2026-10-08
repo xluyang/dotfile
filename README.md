@@ -1,7 +1,7 @@
 # dotfiles
 
 Personal Linux/WSL development-environment configuration for Neovim, tmux,
-and Fish (with Starship).
+Fish (with Starship), and Windows Terminal.
 
 ![最终配置展示](assets/showcase.png)
 
@@ -19,6 +19,7 @@ chezmoi, and it does not change the login shell.
 | Fish | `fish/config.fish`, `fish/conf.d/` | `${XDG_CONFIG_HOME:-~/.config}/fish/` | Yes, per-file links |
 | Fisher manifest | `fish/fish_plugins` | `${XDG_CONFIG_HOME:-~/.config}/fish/fish_plugins` | Yes |
 | Starship | `starship/starship.toml` | `${XDG_CONFIG_HOME:-~/.config}/starship.toml` | Yes |
+| Windows Terminal | `windows-terminal/settings.json` | `%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json` | Yes, file copy (WSL only) |
 
 ## Shell model
 
@@ -46,6 +47,7 @@ Install shell-specific managers and themes as described in:
 - [Starship prompt](starship/README.md)
 - [Tmux and TPM](tmux/README.md)
 - [Neovim/LazyVim](nvim/README.md)
+- [Windows Terminal](windows-terminal/README.md)
 
 ## Deployment
 
@@ -69,6 +71,11 @@ location before deployment when required:
 ```sh
 TMUX_PLUGIN_MANAGER_PATH="$HOME/.tmux/plugins" ./install.sh
 ```
+
+Under WSL, the installer also copies `windows-terminal/settings.json` to the
+Windows Terminal `LocalState` directory. It cannot be a symlink across the
+WSL/Windows boundary, so the file is copied instead. Close Windows Terminal
+before deploying so the running instance does not overwrite the copied file.
 
 The installer does not install Fisher plugins. After installing Fish and
 Fisher, synchronize the repository manifest with:
@@ -163,6 +170,14 @@ live there. See [fish/README.md](fish/README.md).
 Starship is the prompt for Fish, with a Catppuccin Mocha two-line theme. See
 [starship/README.md](starship/README.md).
 
+### Windows Terminal
+
+`windows-terminal/settings.json` carries the Windows Terminal profiles, the
+Catppuccin Mocha color scheme and dark window theme, and the JetBrains Maple
+Mono font. Unlike the other components it is copied (not symlinked) to the
+Windows-side `LocalState` path and is only deployed under WSL. See
+[windows-terminal/README.md](windows-terminal/README.md).
+
 ## Verification
 
 After deployment, verify links and shell configuration:
@@ -186,7 +201,7 @@ Edit repository files, rerun `./install.sh` when links need refreshing, and
 commit only the component being changed:
 
 ```sh
-git add nvim tmux fish starship README.md install.sh bootstrap.sh setup
+git add nvim tmux fish starship windows-terminal README.md install.sh bootstrap.sh setup
 git commit
 ```
 
