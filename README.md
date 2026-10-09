@@ -1,7 +1,7 @@
 # dotfiles
 
 Personal Linux/WSL development-environment configuration for Neovim, tmux,
-Fish (with Starship), and Windows Terminal.
+Fish (with Starship), Windows Terminal, and SumatraPDF.
 
 ![最终配置展示](assets/showcase.png)
 
@@ -20,6 +20,7 @@ chezmoi, and it does not change the login shell.
 | Fisher manifest | `fish/fish_plugins` | `${XDG_CONFIG_HOME:-~/.config}/fish/fish_plugins` | Yes |
 | Starship | `starship/starship.toml` | `${XDG_CONFIG_HOME:-~/.config}/starship.toml` | Yes |
 | Windows Terminal | `windows-terminal/settings.json` | `%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json` | Yes, file copy (WSL only) |
+| SumatraPDF | `sumatra/SumatraPDF-settings.txt` | `%LOCALAPPDATA%\SumatraPDF\SumatraPDF-settings.txt` (fallback `%APPDATA%`) | Yes, file copy (WSL only) |
 
 ## Shell model
 
@@ -48,6 +49,7 @@ Install shell-specific managers and themes as described in:
 - [Tmux and TPM](tmux/README.md)
 - [Neovim/LazyVim](nvim/README.md)
 - [Windows Terminal](windows-terminal/README.md)
+- [SumatraPDF](sumatra/README.md)
 
 ## Deployment
 
@@ -60,6 +62,13 @@ git clone <your-repository-url> ~/Document/dotfile
 cd ~/Document/dotfile
 ./install.sh
 ```
+
+The installer detects the operating system (`uname -s` plus WSL markers) and
+adapts: on Linux and macOS it only creates symlinks; under WSL it additionally
+copies the Windows-side configs (Windows Terminal, SumatraPDF). Native Windows
+is not supported — on Windows, install WSL and run the installer from inside
+WSL; the script refuses to run in other environments (e.g. a native Windows
+shell).
 
 Existing target files are moved to timestamped sibling backups before a link
 is created. Fish is handled per file so Fisher-generated functions,
@@ -76,6 +85,9 @@ Under WSL, the installer also copies `windows-terminal/settings.json` to the
 Windows Terminal `LocalState` directory. It cannot be a symlink across the
 WSL/Windows boundary, so the file is copied instead. Close Windows Terminal
 before deploying so the running instance does not overwrite the copied file.
+The same applies to `sumatra/SumatraPDF-settings.txt`, copied to SumatraPDF's
+settings directory (3.5+ under `%LOCALAPPDATA%`, older under `%APPDATA%`);
+close SumatraPDF before deploying for the same reason.
 
 The installer does not install Fisher plugins. After installing Fish and
 Fisher, synchronize the repository manifest with:
@@ -178,6 +190,14 @@ Mono font. Unlike the other components it is copied (not symlinked) to the
 Windows-side `LocalState` path and is only deployed under WSL. See
 [windows-terminal/README.md](windows-terminal/README.md).
 
+### SumatraPDF
+
+`sumatra/SumatraPDF-settings.txt` carries a Catppuccin Mocha UI theme
+(`Mocha`) that colors the window, toolbar, sidebar, and tabs while keeping
+PDF pages white-on-black-free (white page, black text). Like Windows Terminal
+it is copied (not symlinked) to the Windows-side settings path and is only
+deployed under WSL. See [sumatra/README.md](sumatra/README.md).
+
 ## Verification
 
 After deployment, verify links and shell configuration:
@@ -201,7 +221,7 @@ Edit repository files, rerun `./install.sh` when links need refreshing, and
 commit only the component being changed:
 
 ```sh
-git add nvim tmux fish starship windows-terminal README.md install.sh bootstrap.sh setup
+git add nvim tmux fish starship windows-terminal sumatra README.md install.sh bootstrap.sh setup
 git commit
 ```
 
